@@ -16,6 +16,9 @@ totalSalary=0
 totalEmployeeHours=0
 totalWorkingDays=0
 
+#DECLARING A DICTIONARY
+declare -A dailyWage
+
 #FUNCTION TO GET WORK HOURS
 function getWorkHours()
 {
@@ -47,11 +50,12 @@ function calculateWage()
 while [[ $totalEmployeeHours -lt $NUMBER_OF_WORKING_HOURS && $totalWorkingDays -lt $NUMBER_OF_WORKING_DAYS ]]
 do
 	((totalWorkingDays++))
-	dailyWage[totalWorkingDays]=$(calculateWage $(getWorkHours))
+	dailyWage["$totalWorkingDays"]=$(calculateWage $(getWorkHours))
 	totalEmployeeHours=$(($totalEmployeeHours + $(getWorkHours)))
 done
 
 #PRINT SALARY FOR A MONTH
 salary=$(($(calculateWage $totalEmployeeHours)))
-echo "Daily wages: ${dailyWage[@]}"
 echo "Total Wage:" $salary
+echo "Daily wages:${dailyWage[@]}"
+echo "Days:${!dailyWage[@]}"
