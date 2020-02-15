@@ -36,8 +36,7 @@ function getWorkHours()
 }
 
 #GET WORK HOUR FROM FUNCTION AND CALCULATE DAILY WAGE TILL CONDITION SATISFIED
-while [[ $totalEmployeeHours -le $NUMBER_OF_WORKING_HOURS &&
-			$totalWorkingDays -le $NUMBER_OF_WORKING_DAYS ]]
+while [[ $totalEmployeeHours -le $NUMBER_OF_WORKING_HOURS && $totalWorkingDays -le $NUMBER_OF_WORKING_DAYS ]]
 do
 	((totalWorkingDays++))
 	totalEmployeeHours=$(($totalEmployeeHours + $(getWorkHours)))
