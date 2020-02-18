@@ -31,7 +31,7 @@ function getWorkHours()
 		* )
 			employeeHour=0
 			;;
-   esac
+	esac
 	echo $employeeHour
 }
 
